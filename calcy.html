@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A nice calculltar for student</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: rgb(245, 119, 186);   
+                 }
+        .main-container{
+            width: 32rem;
+            height: 25rem;
+            background-color: rgb(166, 74, 252);
+     
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 5px 55px rgba(0, 0, 0, 0.3);
+           
+
+        }
+        .sub-main-one{
+          float: left;
+          min-width: 10rem;
+          color: white;
+          text-transform: uppercase;
+          margin-left: 20px;
+          margin-top: 20px;
+          font-weight: 300;
+          animation: animate 2s linear infinite;
+
+        }
+        
+        @keyframes animate{
+              0%{
+                  opacity: 0.1
+                              
+                  }
+              100%{
+                  opacity: 1;
+              }
+        }
+
+        .sub-main-one:hover{
+            color: black;
+            transition: 0.5s;
+        }
+        .sub-main-two{
+            margin-left: 50px;
+          float: left;
+
+        }
+
+        #inp input{
+            color: white;
+            border: none;
+            border-bottom: 1px solid white;
+            font-size: 17px;
+            margin-top: 20px;
+            width: 200px;
+            background: transparent;
+            outline: none;
+            
+            height: 25px;
+            transition: 0.3s;
+        }
+
+        #inp input::placeholder{
+            color: black;
+        }
+
+        button{
+            color: black;
+            font-size: 20px;
+            margin-top: 20px;
+            background: none;
+            outline: none;
+            border: none;
+            transition: 0.5s;
+            
+
+        }
+        button:hover{
+            cursor: pointer;
+            color: white;
+
+        }
+        #showData{
+            float: left;
+            margin-top: 30px;
+            margin-left: 50px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sub-main-one">
+            <h2>STUDENT </h2>
+            <h2>
+                GRADE
+            </h2>
+
+             <h2> CALCY</h2>
+             
+        </div>
+        <div class="sub-main-two">
+
+            <div id="inp">
+                <input id="input-1" type="text" placeholder="WEB PROGRAMMING">
+             </div>
+             <div id="inp">
+                <input id="input-2" type="text" placeholder="MATHMATICS">
+             </div>
+             <div id="inp">
+                <input id="input-3" type="text" placeholder="COMPUTER">
+             </div>
+             <div id="inp">
+                <input id="input-4" type="text" placeholder="  PHYSICS">
+             </div>
+                 <button onclick="calculate()">
+                     ShowPercentage
+                 </button>
+        </div>
+        <div>
+            <p id="showData"></p>
+        </div>
+
+    </div>
+
+    <script>
+
+ const calculate = () =>{
+      
+    let inputValue1 = document.getElementById('input-1').value;
+    let inputValue2 = document.getElementById('input-2').value;
+     let inputValue3 = document.getElementById('input-3').value;
+    let inputValue4 = document.getElementById('input-4').value;
+    let grades = '';
+    let pass = '';
+    debugger;
+   
+     let totalPoints = Number(inputValue1)+Number(inputValue2) + Number(inputValue3) + Number(inputValue4);
+    //  alert(totalPoints)
+
+     let perCent = (totalPoints/400 * 100)
+    //  alert(perCent +'%')
+
+    if(perCent<=100 && perCent>=80){
+        grades = 'A'
+    }else if(perCent<=79 && perCent>=60){
+        grades = 'B'
+    }else if(perCent<=59 && perCent>=40){
+        grades = 'C'
+    }else{
+        grades = 'F'
+    }
+     if(grades ==='F'){
+         pass = 'You are fail'
+     }else{
+        pass = 'You are pass'
+     }
+    document.getElementById('showData').innerHTML = `Out of 400 your total is ${totalPoints} and percentage is ${perCent}%. </br> Your grade is ${grades}. </br> ${pass}`
+
+ }
+ 
+
+
+    </script>
+    
+</body>
+</html>
